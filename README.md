@@ -1,1 +1,1 @@
-# platform.241.store.gateway
+# platform.tech-emporium.gateway
