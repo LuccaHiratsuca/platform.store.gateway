@@ -23,6 +23,16 @@ spring:
           predicates:
             - Path=/
 
+        - id: store-product
+          uri: lb://store-product
+          predicates:
+            - Path=/products/**
+
+        - id: store-order
+          uri: lb://store-order
+          predicates:
+            - Path=/orders/**
+
 management:
   endpoints:
     web:
@@ -43,4 +53,17 @@ api:
       POST /auth/register,
       POST /auth/login,
       ANY /auth/actuator,
-      ANY /accounts/actuator
+      ANY /accounts/actuator,
+      ANY /products/actuator,
+      ANY /orders/actuator,
+      ANY /gateway/actuator,
+      ANY /auth/swagger**,
+      ANY /accounts/swagger**,
+      ANY /products/swagger**,
+      ANY /orders/swagger**,
+      ANY /auth/v3**,
+      ANY /accounts/v3**,
+      ANY /products/v3**,
+      ANY /orders/v3**
+
+
