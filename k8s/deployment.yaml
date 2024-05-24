@@ -5,7 +5,7 @@ metadata:
   labels:
     app: gateway-api
 spec:
-  replicas: 5
+  replicas: 1
   selector:
     matchLabels:
       app: gateway-api
@@ -15,8 +15,14 @@ spec:
         app: gateway-api
     spec:
       containers:
-      - name: gateway-api
-        image: luccahiratsuca/gateway:latest
-        ports:
-        - containerPort: 8080
-    
+        - name: gateway-api
+          image: luccahiratsuca/gateway:latest
+          ports:
+            - containerPort: 8080
+          env:
+
+            - name: DISCOVERY_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: discovery-configmap
+                  key: DISCOVERY_HOST
