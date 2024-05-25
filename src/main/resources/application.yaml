@@ -38,15 +38,15 @@ management:
     web:
       base-path: /gateway/actuator
       exposure:
-        include: [ 'prometheus' ]
+        iinclude: ['*', 'prometheus']
 
 eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka/}
-
+      defaultZone: http://${DISCOVERY_HOST}:8761/eureka/
+  
 api:
   endpoints:
     open: >
@@ -66,4 +66,9 @@ api:
       ANY /products/v3**,
       ANY /orders/v3**
 
-
+springdoc:
+  swagger-ui:
+    enabled: true
+    url: /v3/api-docs
+  api-docs:
+    enabled: true
